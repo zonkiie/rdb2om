@@ -37,16 +37,7 @@ func get_relations(db *sqlx.DB, table string, schema string)(resultmap []map[str
 		query = re.ReplaceAllString(query, "'" + table + "'")
 		re = regexp.MustCompile("\\barg_schema_name\\b")
 		query = re.ReplaceAllString(query, "'public'")
-		//fmt.Printf("Query: %s\n", query)
-		rows, err := db.Queryx(query)
-		if err != nil {
-			panic(err)
-		}
-		for rows.Next() {
-			singularmap := make(map[string]interface{})
-			err = rows.MapScan(singularmap)
-			resultmap = append(resultmap, singularmap)
-		}
+		resultmap = executeQuery(db, query)
 	} else {
 		resultmap = relationquery_func[*dbDriver](db, schema, table)
 	}
