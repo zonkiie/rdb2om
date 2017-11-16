@@ -33,6 +33,8 @@ import (
 	"github.com/vharitonsky/iniflags"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/go-sql-driver/mysql"
+	// _ "github.com/ziutek/mymysql/mysql"
+	// _ "github.com/ziutek/mymysql/native"
 	//"github.com/jmoiron/sqlx/reflectx"
 	//_ "github.com/lib/pq"
 	_ "github.com/jackc/pgx"

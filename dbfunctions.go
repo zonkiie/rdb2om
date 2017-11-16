@@ -13,7 +13,9 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-
+// use special syntay for mysql connection
+// @see https://github.com/gogits/gogs/issues/39
+// user:pass@tcp(localhost:3306)/database
 func connect() {
 	if *debugOutput { fmt.Fprintf(os.Stderr, "Driver: %s, DSN: %s\n", *dbDriver, *dbDSN) }
 	if *dbDriver == "" { panic("Driver is not defined!") }
@@ -25,7 +27,8 @@ func connect() {
 	}
 	err = db.Ping()
 	if err != nil {
-		panic(err)
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+		//panic(err)
 	}
 }
 

@@ -66,6 +66,7 @@ func get_pk_fk_mapping(db *sqlx.DB, constraintname string, mapping []map[string]
 }
 
 func get_pk(schema string, table string)(result []string) {
+	//if table == "" { panic("No table name defined!") } else { fmt.Print("Table:" + table + "\n") }
 	var query string
 	var found bool
 	result = make([]string, 0)
@@ -82,6 +83,7 @@ func get_pk(schema string, table string)(result []string) {
 	} else {
 		result = primary_keys_query_func[*dbDriver](db, schema, table)
 	}
+	//fmt.Printf("%v\n", result)
 	return
 }
 
