@@ -144,9 +144,9 @@ func load_table_by_pkey(db *sqlx.DB, schema string, table string, fk map[string]
 		
 		fkmap := make(map[string]*fk_table)
 		
-		for _, avalue := range relations {
+		for idx, avalue := range relations {
 			constraintname := fmt.Sprint(avalue["constraint_name"])
-			if *debugOutput { fmt.Fprintf(os.Stderr, "File/Line: %s, Type: %T\n", file_line(), fkmap[constraintname]) }
+			if *debugOutput { fmt.Fprintf(os.Stderr, "File/Line: %s, Constraint Name: %v, Typeof Constraint Name: %T, Idx: %v, Type: %T\n", file_line(), constraintname, constraintname, idx, fkmap[constraintname]) }
 			
 			if _, ok := fkmap[constraintname];!ok {
 				fkmap[constraintname] = &fk_table{kv: nil, foreign_schema_name: fmt.Sprint(avalue["foreign_schema_name"]), foreign_table_name: fmt.Sprint(avalue["foreign_table_name"])}
@@ -176,9 +176,8 @@ func load_table_by_pkey(db *sqlx.DB, schema string, table string, fk map[string]
 				conditionmap = make(map[string]string)
 			} else {
 				if *debugOutput { fmt.Fprintf(os.Stderr, "File/Line: %s, Entering recursion. constraintname: %s, conditionmap: %v\n", file_line(), constraintname, conditionmap) }
-				if rec_level <= 0 {
-					return resultmap
-				}
+				if rec_level <= 0 { return resultmap }
+				if constraintname == "<nil>" { constraintname = "nil" }
 				resultmap[resultkey]["table[" + loadtable + "][" + constraintname + "]"] = load_table_by_pkey(db, loadschema, loadtable, conditionmap, rec_level - 1, detect_cycles)
 				if *debugOutput { fmt.Fprintf(os.Stderr, "File/Line: %s, Resultmap from load call: %v\n", file_line(), resultmap[resultkey]["table[" + loadtable + "][" + constraintname + "]"]) }
 			}

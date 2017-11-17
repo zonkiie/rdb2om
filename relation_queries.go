@@ -115,7 +115,7 @@ WHERE
  */
 "relationquery":`
 SELECT 
-  CONSTRAINT_NAME AS contstraint_name,                       -- Constraint Name
+  CONSTRAINT_NAME AS constraint_name,                        -- Constraint Name
   TABLE_SCHEMA AS schema_name,                               -- Foreign key schema
   TABLE_NAME AS table_name,                                  -- Foreign key table
   COLUMN_NAME AS column_name,                                -- Foreign key column
