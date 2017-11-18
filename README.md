@@ -11,3 +11,8 @@ This Project is in an early development.
 - In next devekopment phase write/definition operations
 - Manual mapping
 
+
+## Similar Projects
+
+ [Postgrest](https://postgrest.com/)
+
