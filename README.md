@@ -6,9 +6,10 @@ This Project is in an early development.
 ## Plan
 
 - Webservice
+- Cleanup, reorganize code
 - Multiple Databases (plugins via dialects)
 - Database Query via URL/POST
-- In next devekopment phase write/definition operations
+- In next development phase write/definition operations
 - Manual mapping
 
 
