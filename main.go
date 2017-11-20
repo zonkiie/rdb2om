@@ -76,7 +76,7 @@ func dump_vars() {
 func prog_run() {
 	CUser, uerror := user.Current()
 	if uerror != nil {
-		panic("Could not determine User!")
+		panic(fmt.Sprintf("Could not determine User! Error: %v", uerror))
 	}
 	defaultConfigFile = CUser.HomeDir + "/.rdb2om"
 	iniflags.SetAllowMissingConfigFile(true)
