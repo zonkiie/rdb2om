@@ -52,14 +52,10 @@ func executeQuery(db *sqlx.DB, query string)(resultmap []map[string]interface{})
 func convertToStringFunc(singularmap map[string]interface{}) {
 	for key, value := range singularmap {
 		switch value.(type) {
-			case int, int32, int64, uint32, uint64:
+			case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64, bool:
 				singularmap[key] = fmt.Sprintf("%v", value)
-			case float32, float64:
-				singularmap[key] = fmt.Sprintf("%lf", value)
 			case nil:
 				singularmap[key] = fmt.Sprintf("")
-			case bool:
-				singularmap[key] = fmt.Sprintf("%t", value)
 			default:
 				singularmap[key] = fmt.Sprintf("%s", value)
 		}
