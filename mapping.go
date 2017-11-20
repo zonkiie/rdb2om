@@ -7,6 +7,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 package main
 
+import (
+// 	"fmt"
+	"github.com/jmoiron/sqlx"
+)
+
 func createMapping(db *sqlx.DB, directory string, schema string, table string) (state bool) {
 	state = false
 	return
