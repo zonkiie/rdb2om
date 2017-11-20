@@ -89,8 +89,8 @@ WHERE
  AND indisprimary
 `,
 // https://stackoverflow.com/questions/769683/show-tables-in-postgresql
-"show_table_query":`
-SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'
+		"all_tables_query":`
+SELECT schemaname,tablename FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'
 `,
 	},
 	"mysql":map[string]string{
@@ -139,9 +139,14 @@ WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY'
 AND i.TABLE_SCHEMA = DATABASE()
 AND i.TABLE_NAME = arg_table_name;
 `,
+"all_tables_query":`
+SELECT TABLE_SCHEMA as schemaname, TABLE_NAME AS tablename FROM information_schema.TABLES WHERE TABLE_SCHEMA = arg_schema_name;
+`,
 	},
 	"sqlite":map[string]string{
-
+"all_tables_query":`
+SELECT name AS tablename FROM sqlite_master WHERE type='table';
+`,
 	},
 }
 
