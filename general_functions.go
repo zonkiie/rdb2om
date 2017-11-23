@@ -10,6 +10,8 @@ package main
 import (
 	"fmt"
 	"runtime"
+	//"io"
+	//"io/ioutil"
 	//"reflect"
 	"github.com/davecgh/go-spew/spew"
 )
@@ -24,6 +26,16 @@ func file_line() string {
 		s = ""
 	}
 	return s
+}
+
+func byte_array_to_string(byteArray []byte) string {
+	s := string(byteArray[:])
+	return s
+}
+
+func string_to_byte_array(str string) []byte {
+	byteArray := []byte(str)
+	return byteArray
 }
 
 func dump_r(data interface{}) string {

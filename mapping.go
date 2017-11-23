@@ -14,5 +14,6 @@ import (
 
 func createMapping(db *sqlx.DB, directory string, schema string, table string) (state bool) {
 	state = false
+	
 	return
 }
