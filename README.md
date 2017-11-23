@@ -16,4 +16,5 @@ This Project is in an early development.
 ## Similar Projects
 
  [Postgrest](https://postgrest.com/)
+ [GORM Recursive fetcher](https://github.com/zonkiie/gorm_recursive_fetcher)
 
