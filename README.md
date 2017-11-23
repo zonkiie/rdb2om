@@ -7,7 +7,7 @@ This Project has the goal to provide an object-like interface to relational data
 
 ## Why not use an orm?
 
-Some ORMs are very powerfull, but they exist only for some few programming languages, so not every programming language has access to a ORM with feature X. You could use a very powerfull ORM on another programming language than your project's language, but this means double class definitions, redundant code, slower performance and other downsides. Why not create an access layer to a database which lets you store your object independend from an ORM?
+Some ORMs are very powerfull, but they exist only for some few programming languages, so not every programming language has access to a ORM with feature X. You could use a very powerfull ORM on another programming language than your project's language, but this means double class definitions, redundant code, slower performance and other downsides. Why not create an access layer to a database which lets you store your objects independend from an ORM?
 
 ## Plan
 
