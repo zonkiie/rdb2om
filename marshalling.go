@@ -12,6 +12,7 @@ import (
 	"encoding/xml"
 	"gopkg.in/yaml.v2"
 	"fmt"
+	"strings"
 )
 
 func JsonMarshal(data interface{}) string {
@@ -43,7 +44,7 @@ func DumpMarshal(data interface{}) string {
 }
 
 func Marshal(data interface{}, format string) string {
-	switch format {
+	switch strings.ToLower(format) {
 		case "xml":
 			return XmlMarshal(data)
 		case "json":
