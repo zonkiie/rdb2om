@@ -56,6 +56,7 @@ var (
 	cwhere = flag.String("Where", "", "The Where Condition")
 	crecdeepth = *flag.Int("RecDeepth", 999, "The Recursion Deepth")
 	convertToString = flag.Bool("ConvertToString", false, "Convert every row to String")
+	cWs = flag.Bool("Webservice", false, "Start Web Service")
 	db *sqlx.DB
 	debugOutput = flag.Bool("DebugOutput", false, "Print debug values")
 	testAnon = flag.Bool("TestAnon", false, "Test the anonymous functions")
