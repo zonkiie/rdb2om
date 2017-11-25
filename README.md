@@ -28,3 +28,5 @@ Some ORMs are very powerfull, but they exist only for some few programming langu
 ## Contributors needed
 
 Please contact me if you are interested in contributing to this project.
+
+As I work on this project alongside many other open source projects and my daily job, I don't have much time for each individual project, so the progress may not be very fast.
