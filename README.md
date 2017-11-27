@@ -19,6 +19,22 @@ Some ORMs are very powerfull, but they exist only for some few programming langu
 - Manual mapping
 - Create/Use a SQL Like Language in further stages.
 
+## Webservice
+
+Warning! Don't expose this service to the internet!
+
+Start Webservice:
+```sh
+./rdb2om -Webservice=true -config /path/to/your/rdb2om.conf
+```
+
+- Show all tables
+  [http://localhost:<port>/](http://localhost:<port>/)
+  [http://localhost:<port>/tables](http://localhost:<port>/tables)
+- Execute Query on tables
+  [http://localhost:<port>/<table>/where/<condition>](http://localhost:<port>/<table>/where/<condition>)
+  Example:
+  [http://localhost:<port>/<table>/where/id=1](http://localhost:<port>/<table>/where/id=1)
 
 ## Similar Projects
 
