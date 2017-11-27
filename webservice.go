@@ -9,19 +9,24 @@ package main
  
 import (
 	"os"
-	"github.com/go-martini/martini"
+	"net/http"
+	"github.com/gin-gonic/gin"
 )
 
 func start_webservice() {
 	os.Setenv("PORT", "31415")
-	m := martini.Classic()
-	m.Get("/:table/:where", func(params martini.Params) string {
-		table := params["table"]
-		//id := params["id"]
-		//where := map[string]string{"id":id}
-		where := params["where"]
-		result := fetch_recursive(db, *dbSchema, table, where, crecdeepth, false)
-		return Marshal(result, *outFormat)
+	router := gin.Default()
+	router.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, Marshal(get_all_tables(db, "public"), *outFormat))
 	})
-	m.Run()
+	router.GET("/tables", func(c *gin.Context) {
+		c.String(http.StatusOK, Marshal(get_all_tables(db, "public"), *outFormat))
+	})
+	router.GET("/:table/where/:where", func(c *gin.Context) {
+		table := c.Param("table")
+		where := c.Param("where")
+		result := fetch_recursive(db, *dbSchema, table, where, crecdeepth, false)
+		c.String(http.StatusOK, Marshal(result, *outFormat))
+	})
+	router.Run()
 }

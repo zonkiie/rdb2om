@@ -26,6 +26,24 @@ type fk_table struct {
 	foreign_table_name string
 }
 
+func get_all_tables(db *sqlx.DB, schema string) (result []string) {
+	result = make([]string, 0)
+	var query string
+	var found bool
+	query, found = querymap[*dbDriver]["all_tables_query"]
+	if found {
+		re := regexp.MustCompile("\\barg_schema_name\\b")
+		query = re.ReplaceAllString(query, "'" + schema + "'")
+		resultmap := executeQuery(db, query)
+		for _, row := range resultmap {
+			result = append(result, fmt.Sprint(row["tablename"]))
+		}
+	//} else {
+	//	result = all_tables_query_func[*dbDriver](db, schema, table)
+	}
+	return
+}
+
 func get_relations(db *sqlx.DB, table string, schema string)(resultmap []map[string]interface{}) {
 	resultmap = make([]map[string]interface{}, 0, 0)
 	var query string
