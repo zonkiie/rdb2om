@@ -7,3 +7,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 package main
  
+import (
+	"os"
+	"github.com/go-martini/martini"
+)
+
+func start_webservice() {
+	os.Setenv("PORT", "31415")
+	m := martini.Classic()
+	m.Get("/:table/:where", func(params martini.Params) string {
+		table := params["table"]
+		//id := params["id"]
+		//where := map[string]string{"id":id}
+		where := params["where"]
+		result := fetch_recursive(db, *dbSchema, table, where, crecdeepth, false)
+		return Marshal(result, *outFormat)
+	})
+	m.Run()
+}

@@ -55,7 +55,7 @@ var (
 	cid = flag.String("ID", "", "The Primary Key of the Table")
 	cwhere = flag.String("Where", "", "The Where Condition")
 	crecdeepth = *flag.Int("RecDeepth", 999, "The Recursion Deepth")
-	convertToString = flag.Bool("ConvertToString", false, "Convert every row to String")
+	convertToString = flag.Bool("ConvertToString", true, "Convert every row to String")
 	cWs = flag.Bool("Webservice", false, "Start Web Service")
 	db *sqlx.DB
 	debugOutput = flag.Bool("DebugOutput", false, "Print debug values")
@@ -100,6 +100,11 @@ func prog_run() {
 	
 	//dump_vars()
 	connect()
+	
+	if *cWs == true {
+		start_webservice()
+		os.Exit(0)
+	}
 	if *cquery != "" {
 		if *debugOutput { fmt.Fprintf(os.Stderr, "Executing Query: %s\n", *cquery) }
 		resultmap := executeQuery(db, *cquery)
