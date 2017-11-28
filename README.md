@@ -19,6 +19,14 @@ Some ORMs are very powerfull, but they exist only for some few programming langu
 - Manual mapping
 - Create/Use a SQL Like Language in further stages.
 
+## Configuration
+
+Write your config file rdb2om.conf
+```
+DbDriver = pgx
+DSN = postgres://user:password@localhost/schema1
+```
+
 ## Webservice
 
 Warning! Don't expose this service to the internet!
