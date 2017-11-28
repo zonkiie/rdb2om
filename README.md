@@ -36,6 +36,11 @@ Start Webservice:
 ./rdb2om -Webservice=true -config /path/to/your/rdb2om.conf
 ```
 
+The Webservice is implemented based on gin
+
+[https://github.com/gin-gonic/gin](https://github.com/gin-gonic/gin)
+
+
 ## Queries
 
 - Show all tables
